@@ -42,6 +42,7 @@
 
 package assignment3;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class QuickSort {
@@ -73,13 +74,13 @@ public class QuickSort {
 
     private int partition(int arr[], int low, int high, String type)
     {
-        if(type=="median")
+
+        if(Objects.equals(type,"median"))
             random(arr,low,high);
-        if(type=="low"){
+        if(Objects.equals(type, "low")){
             int temp1=arr[low];
             arr[low]=arr[high];
             arr[high]=temp1;
-
         }
         int pivot = arr[high];
 
@@ -127,9 +128,9 @@ public class QuickSort {
     public static void main(String args[])
     {
         Random rd = new Random();
-        int[] arr = new int[10];
+        int[] arr = new int[10000000];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rd.nextInt();
+            arr[arr.length-1 -i] = i;
         }
         int n = arr.length;
 

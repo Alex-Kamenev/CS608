@@ -110,9 +110,9 @@ import java.util.Random;
 public class Driver {
     public static void main( String [ ] args ){
         Random rd = new Random();
-        int[] randomArr1 = new int[8000];
+        int[] randomArr1 = new int[10000];
         for (int i = 0; i < randomArr1.length; i++) {
-            randomArr1[i] = (int)(Math.random() * ((16000 - 0) + 1)) + 0;
+            randomArr1[i] = (int)(Math.random() * ((20000 - 0) + 1)) + 0;
         }
         int randomArr2A[] = new int[randomArr1.length];
         for (int i = 0; i < randomArr1.length; i++)
@@ -121,7 +121,7 @@ public class Driver {
         for (int i = 0; i < randomArr1.length; i++)
             randomArr2B[i] = randomArr1[i];
 
-        int[] increasingArr1 = new int[8000];
+        int[] increasingArr1 = new int[10000];
         for (int i = 0; i < increasingArr1.length; i++) {
             increasingArr1[i] = i;
         }
@@ -132,7 +132,7 @@ public class Driver {
         for (int i = 0; i < increasingArr1.length; i++)
             increasingArr2B[i] = increasingArr1[i];
 
-        int[] decreasingArr1 = new int[8000];
+        int[] decreasingArr1 = new int[10000];
         for (int i = decreasingArr1.length-1; i >= 0; i--) {
             decreasingArr1[decreasingArr1.length-1 - i] = i;
         }
