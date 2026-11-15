@@ -38,6 +38,9 @@ import java.util.Vector;
 
 public class MSPDV {
     public long divQ(Vector<Integer> inputV) {
+        if (inputV.isEmpty()) {
+            throw new IllegalArgumentException("A nonempty vector is required");
+        }
         int n = inputV.size();
         return maxSubArray(inputV, 0, (n-1));
     }

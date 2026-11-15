@@ -29,9 +29,8 @@
  *
  *   Remarks
  *   -------
- *   For some reason I am yet to discover my implementation of QuickSort give a StackOverflow error for any
- *   ASCENDING input of more than about 8000. It works with much larger descending or random inputs. I am trying to
- *   resolve this but have not had luck so far.
+ *   Recursing into the smaller partition bounds stack depth, including sorted input.
+ *   Choosing an endpoint pivot can still take quadratic time on sorted input.
  *
  *
  *
@@ -49,9 +48,9 @@ public class QuickSort {
     private void random(int arr[],int low,int high)
     {
         Random rand= new Random();
-        int a = rand.nextInt(high-low)+low;
-        int b = rand.nextInt(high-low)+low;
-        int c = rand.nextInt(high-low)+low;
+        int a = rand.nextInt(high-low+1)+low;
+        int b = rand.nextInt(high-low+1)+low;
+        int c = rand.nextInt(high-low+1)+low;
 
         int pivot = middleOfThree(arr, a, b, c);
 
@@ -108,12 +107,16 @@ public class QuickSort {
 
     public void sort(int arr[], int low, int high, String type)
     {
-        if (low < high)
+        while (low < high)
         {
             int pi = partition(arr, low, high, type);
-
-            sort(arr, low, pi-1, type);
-            sort(arr, pi+1, high, type);
+            if (pi - low < high - pi) {
+                sort(arr, low, pi-1, type);
+                low = pi+1;
+            } else {
+                sort(arr, pi+1, high, type);
+                high = pi-1;
+            }
         }
     }
 

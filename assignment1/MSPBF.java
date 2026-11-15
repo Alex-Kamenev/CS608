@@ -38,6 +38,9 @@ import java.util.Vector;
 
 public class MSPBF {
     public long bruteForce(Vector<Integer> inputV){
+        if (inputV.isEmpty()) {
+            throw new IllegalArgumentException("A nonempty vector is required");
+        }
         int n = inputV.size();
         long sumMax = Long.MIN_VALUE;
 

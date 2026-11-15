@@ -23,12 +23,14 @@ public class Graph {
 
     //constructor
     public Graph(int numVertices, int numEdges) {
+        if (numVertices < 0 || numEdges < 0) {
+            throw new IllegalArgumentException("Vertex and edge counts must be nonnegative");
+        }
         this.numberOfVertices = numVertices;
         this.NumberOfEdges = numEdges;
 
         if (NumberOfEdges > maxNumofEdges(numberOfVertices)) {
-            System.out.println("Number of edges greater than possible number of edges for given number of vertices");
-            return;
+            throw new IllegalArgumentException("Too many edges for the given number of vertices");
         }
 
 
@@ -53,8 +55,8 @@ public class Graph {
     }
 
     //helper for max number of edges based on vertices
-    private int maxNumofEdges(int numberOfVertices) {
-        return Math.multiplyExact(numberOfVertices, numberOfVertices);
+    private long maxNumofEdges(int numberOfVertices) {
+        return (long) numberOfVertices * numberOfVertices;
     }
 
     // Method to add edges between given vertices
