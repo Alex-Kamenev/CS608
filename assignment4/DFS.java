@@ -116,6 +116,10 @@ public class DFS {
     private static int time;
 
     public static void DFS(Graph G) {
+        for (Vertex vertex : G.getListOfVertices()) {
+            vertex.setColor(Vertex.Color.White);
+            vertex.setPredecessor(vertex.getNULL());
+        }
         //Not really needed since the Graph class and Vertex class are build so that a vertex is created with this values in place
         //mark all vertices as not visited and not having a predecessor
 //        for (int i = 0; i < G.getListOfVertices().size(); i++) {
